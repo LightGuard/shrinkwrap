@@ -1,0 +1,13 @@
+include 'api'
+include 'impl-base'
+include 'spi'
+include 'extension-glassfish'
+include 'extension-tomcat-6'
+include 'extension-jetty-6'
+include 'extension-jetty-7'
+include 'extension-openejb'
+include 'extension-tar'
+include 'extension-vfs3'
+include 'extension-vdf'
+
+rootProject.name = 'shrinkwrap'

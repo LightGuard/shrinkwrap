@@ -5,3 +5,7 @@ bin
 .classpath
 .idea
 *.iml
+build
+*.out
+*.sw?
+.gradle

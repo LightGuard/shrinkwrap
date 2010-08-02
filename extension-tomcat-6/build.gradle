@@ -1,0 +1,10 @@
+dependencies {
+  compile "org.apache.tomcat:catalina:${versions.tomcat}"
+
+  runtime
+          "org.apache.tomcat:coyote:${versions.tomcat}"
+          "org.apache.tomcat:jasper:${versions.tomcat}"
+
+  testRuntime "org.apache.httpcomponents:httpclient:${versions.httpclient}"
+
+}

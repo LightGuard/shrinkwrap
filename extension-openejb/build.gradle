@@ -1,0 +1,3 @@
+dependencies {
+  compile "org.apache.openejb:openejb-core:${versions.openejb}"
+}

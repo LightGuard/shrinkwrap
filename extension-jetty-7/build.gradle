@@ -1,0 +1,7 @@
+dependencies {
+  compile "org.eclipse.jetty:jetty-webapp:${versions.jetty7}"
+
+  runtime "javax.servlet:servlet-api:2.5"
+
+  testRuntime "org.apache.httpcomponents:httpclient:${versions.httpClient}"
+}

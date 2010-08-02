@@ -1,0 +1,51 @@
+apply plugin: 'java'
+
+versions = [
+            junit: '4.6', 
+            glassfish: '3.0.1-b02', 
+            jetty6: '6.1.24', 
+            httpClient: '4.0.1', 
+            jetty7: '7.1.4.v20100610', 
+            openejb: '3.1.2', 
+            tarbarian: '1.0.0-SNAPSHOT', 
+            tomcat6: '6.0.26', 
+            jbossVfs: '3.0.0.CR5', 
+            jbossDeployersVfs: '2.2.0.Alpha4', 
+            jbossLogging: '2.2.0.CR1', 
+            jbossLogManager: '1.2.0.CR1', 
+            jbossThreads: '2.0.0.CR4', 
+            jbossReloadedVdfBootstrapMinimal: '0.1.2' 
+          ]
+
+subprojects {
+  apply plugin: 'java'
+
+  archivesBaseName = "shrinkwrap-${it.name}"
+  version = '1.0.0-SNAPSHOT'
+
+  repositories {
+    mavenRepo(urls: 'https://repository.jboss.org/nexus/content/groups/public')
+  }
+
+  dependencies {
+    testCompile "junit:junit:${versions.junit}"
+  }
+
+  test {
+    useJUnit()
+  }
+}
+
+configure(subprojects - [project(':api'), project(':extension-tar')])
+{
+  dependencies {
+    compile project(':api')
+  }
+}
+
+configure(subprojects - [project(':api'), project(':impl-base'), project(':spi'), project(':extension-tar')])
+{
+  dependencies {
+    compile project(':impl-base')
+  }
+}

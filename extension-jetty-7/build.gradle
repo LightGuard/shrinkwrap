@@ -3,5 +3,5 @@ dependencies {
 
   runtime "javax.servlet:servlet-api:2.5"
 
-  testRuntime "org.apache.httpcomponents:httpclient:${versions.httpClient}"
+  testCompile "org.apache.httpcomponents:httpclient:${versions.httpClient}"
 }

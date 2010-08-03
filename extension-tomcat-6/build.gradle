@@ -4,6 +4,6 @@ dependencies {
   runtime "org.apache.tomcat:coyote:${versions.tomcat6}",
           "org.apache.tomcat:jasper:${versions.tomcat6}"
 
-  testRuntime "org.apache.httpcomponents:httpclient:${versions.httpClient}"
+  testCompile "org.apache.httpcomponents:httpclient:${versions.httpClient}"
 
 }

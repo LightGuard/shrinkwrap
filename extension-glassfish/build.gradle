@@ -2,8 +2,8 @@ sourceCompatibility = '1.6'
 targetCompatibility = '1.6'
 
 dependencies {
-  // TODO: this should be a client module because Ivy can't resolve the hk2-jar type'
+  // because Ivy can't resolve the hk2-jar type'
   compile "org.glassfish.common:glassfish-api:${versions.glassfish}@jar"
 
-  testRuntime: "org.glassfish.extras:glassfish-embedded-all:${versions.glassfish}"
+  testCompile  "org.glassfish.extras:glassfish-embedded-all:${versions.glassfish}"
 }

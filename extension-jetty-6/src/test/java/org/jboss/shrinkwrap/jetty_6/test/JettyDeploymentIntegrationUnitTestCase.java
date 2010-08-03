@@ -69,7 +69,7 @@ public class JettyDeploymentIntegrationUnitTestCase
    /**
     * Port to which the HTTP server should bind (above 1024 for *nix non-root environments)
     */
-   private static final int HTTP_BIND_PORT = 12345;
+   private static final int HTTP_BIND_PORT = 12349;
 
    /**
     * Path, relative to the resources base, of the directory containing web.xml descriptor for tests

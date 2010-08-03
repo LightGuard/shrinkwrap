@@ -7,7 +7,7 @@ include 'extension-jetty-6'
 include 'extension-jetty-7'
 include 'extension-openejb'
 include 'extension-tar:api'
-include 'extension-tar:impl'
+//include 'extension-tar:impl'
 include 'extension-vfs3'
 //include 'extension-vdf'
 

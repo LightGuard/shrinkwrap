@@ -9,6 +9,6 @@ include 'extension-openejb'
 include 'extension-tar:api'
 include 'extension-tar:impl'
 include 'extension-vfs3'
-include 'extension-vdf'
+//include 'extension-vdf'
 
 rootProject.name = 'shrinkwrap'

@@ -1,3 +1,7 @@
 dependencies {
   compile project(':spi')  
+
+  testCompile files(project(':api').sourceSets.test.classesDir)
+
+  test.dependsOn(':api:compileTestJava')
 }

@@ -23,7 +23,8 @@ subprojects {
   version = '1.0.0-SNAPSHOT'
 
   repositories {
-    mavenRepo(urls: 'https://repository.jboss.org/nexus/content/groups/public')
+    mavenRepo(urls: 'https://repository.jboss.org/nexus/content/groups/public') 
+    mavenRepo(urls: 'https://repository.jboss.org/nexus/content/repositories/deprecated')
   }
 
   dependencies {
@@ -32,6 +33,14 @@ subprojects {
 
   test {
     useJUnit()
+  }
+
+  processResources {
+    include '**/*'
+  }
+
+  processTestResources {
+    include '**/*'
   }
 }
 

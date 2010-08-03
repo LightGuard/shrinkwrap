@@ -1,4 +1,7 @@
 apply plugin: 'java'
+
+defaultTasks 'test'
+
 versions = [
             junit: '4.6', 
             glassfish: '3.0.1-b02', 
@@ -56,6 +59,11 @@ configure(subprojects - [project(':api'), project(':impl-base'), project(':spi')
   dependencies {
     compile project(':impl-base')
   }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = gradle.gradleVersion
+    jarPath = 'wrapper'
 }
 
 dependsOnChildren()

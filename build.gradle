@@ -1,5 +1,4 @@
 apply plugin: 'java'
-
 versions = [
             junit: '4.6', 
             glassfish: '3.0.1-b02', 
@@ -36,16 +35,18 @@ subprojects {
   }
 }
 
-configure(subprojects - [project(':api'), project(':extension-tar')])
+configure(subprojects - [project(':api')])
 {
   dependencies {
     compile project(':api')
   }
 }
 
-configure(subprojects - [project(':api'), project(':impl-base'), project(':spi'), project(':extension-tar')])
+configure(subprojects - [project(':api'), project(':impl-base'), project(':spi'), project(':extension-tar:api')])
 {
   dependencies {
     compile project(':impl-base')
   }
 }
+
+dependsOnChildren()

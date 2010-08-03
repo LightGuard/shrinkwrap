@@ -1,0 +1,21 @@
+dependencies {
+  compile project(':extension-vfs3'),
+          "org.jboss:jboss-vfs:${versions.jbossVfs}",
+          "org.jboss.logging:jboss-logging-spi:${versions.jbossLogging}"
+
+  compile module("org.jboss.deployers:jboss-deployers-vfs:${versions.jbossDeployersVfs}") {
+    dependencies "org.jboss.deployers:jboss-deployers-vfs-spi:${versions.jbossDeployersVfs}",
+                 "org.jboss.deployers:jboss-deployers-client-spi:${versions.jbossDeployersVfs}",
+                 "org.jboss.deployers:jboss-deployers-spi:${versions.jbossDeployersVfs}"
+    exclude group: 'apache-xerces'
+    exclude group: 'wutka-dtdparser'
+    exclude group: 'trove'
+  }
+
+  testRuntime "org.jboss.logging:jboss-logging-jdk:${versions.jbossLogging}",
+              "org.jboss.logging:jboss-logging-logmanager:${versions.jbossLogging}",
+              "org.jboss.logmanager:jboss-logmanager:${versions.jbossLogManager}",
+              "org.jboss.threads:jboss-threads:${versions.jbossThreads}",
+              "org.jboss.threads:jboss-threads-metadata:${versions.jbossThreads}",
+              "org.jboss.reloaded:jboss-reloaded-vdf-bootstrap-minimal:${versions.jbossReloadedVdfBootstrapMinimal}"
+}

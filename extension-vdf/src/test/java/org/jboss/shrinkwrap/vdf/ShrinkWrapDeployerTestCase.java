@@ -55,7 +55,7 @@ public class ShrinkWrapDeployerTestCase
    /**
     * MC bean name of the {@link ShrinkWrapDeployer}
     */
-   private static final String NAME_MC_SHRINKWRAP_DEPLOYER = "ShrinkWrapDeployer";
+   private static String NAME_MC_SHRINKWRAP_DEPLOYER = "ShrinkWrapDeployer";
 
    /**
     * Name of a ShrinkWrap {@link Archive} we'll deploy
@@ -75,7 +75,7 @@ public class ShrinkWrapDeployerTestCase
    /**
     * Name of the Deployment XML to install the ShrinkWrapDeployer
     */
-   private static final String FILENAME_SHRINKWRAP_DEPLOYER_XML = "../classes/shrinkwrap-deployer-jboss-beans.xml";
+   private static final String FILENAME_SHRINKWRAP_DEPLOYER_XML = "shrinkwrap-deployer-jboss-beans.xml";
 
    //-------------------------------------------------------------------------------------||
    // Instance Members -------------------------------------------------------------------||
@@ -143,12 +143,12 @@ public class ShrinkWrapDeployerTestCase
       log.info("Boot took: " + total + "ms");
 
       // Install the ShrinkWrapDeployer
-      final URL base = this.getClass().getProtectionDomain().getCodeSource().getLocation();
-      final URL shrinkWrapDeployerXml = new URL(base, FILENAME_SHRINKWRAP_DEPLOYER_XML);
+      final URL shrinkWrapDeployerXml = this.getClass().getProtectionDomain().getClassLoader().getResource( FILENAME_SHRINKWRAP_DEPLOYER_XML );
       log.info(shrinkWrapDeployerXml);
       final VirtualFile shrinkWrapDeployerFile = VFS.getChild(shrinkWrapDeployerXml);
       final Deployment deployment = VFSDeploymentFactory.getInstance().createVFSDeployment(shrinkWrapDeployerFile);
       this.shrinkWrapDeployerDeployment = deployment;
+      NAME_MC_SHRINKWRAP_DEPLOYER = deployment.getName();
       final MainDeployer mainDeployer = (MainDeployer) server.getKernel().getController().getContextByClass(
             MainDeployer.class).getTarget();
       mainDeployer.addDeployment(deployment);

@@ -1,38 +1,32 @@
 dependencies {
   compile project(':extension-vfs3'),
           "org.jboss:jboss-vfs:${versions.jbossVfs}",
-          "org.jboss.deployers:jboss-deployers-client-spi:${versions.jbossDeployersVfs}",
-          "org.jboss.deployers:jboss-deployers-spi:${versions.jbossDeployersVfs}",
-          "org.jboss.logging:jboss-logging-spi:${versions.jbossLogging}",
-          "org.jboss.deployers:jboss-deployers-vfs:${versions.jbossDeployersVfs}"
+          "org.jboss.logging:jboss-logging-spi:${versions.jbossLogging}"
 
-  testCompile "org.jboss.reloaded:jboss-reloaded-vdf-bootstrap-minimal:${versions.jbossReloadedVdfBootstrapMinimal}"
+  compile module("org.jboss.deployers:jboss-deployers-vfs:${versions.jbossDeployersVfs}") {
+    dependencies "org.jboss.deployers:jboss-deployers-vfs-spi:${versions.jbossDeployersVfs}",
+                 "org.jboss.deployers:jboss-deployers-client-spi:${versions.jbossDeployersVfs}",
+                 "org.jboss.deployers:jboss-deployers-spi:${versions.jbossDeployersVfs}"
+  }
 
-  testRuntime "org.jboss:jbossxb:2.0.2.Beta2",
-              "sun-jaxb:jaxb-api:2.1.4",
-              "log4j:log4j:1.2.14",
-              "org.jboss.logging:jboss-logging-jdk:${versions.jbossLogging}",
+  testCompile "org.jboss.logging:jboss-logging-jdk:${versions.jbossLogging}",
               "org.jboss.logging:jboss-logging-logmanager:${versions.jbossLogging}",
               "org.jboss.logmanager:jboss-logmanager:${versions.jbossLogManager}",
-              "org.jboss.integration:jboss-classloading-spi:6.0.0-Alpha8",
-              "org.jboss.deployers:jboss-deployers-structure-spi:${versions.jbossDeployersVfs}",
-              "org.jboss.deployers:jboss-deployers-client:${versions.jbossDeployersVfs}", 
-              "org.jboss.deployers:jboss-deployers-core:${versions.jbossDeployersVfs}",
               "org.jboss.threads:jboss-threads:${versions.jbossThreads}",
               "org.jboss.threads:jboss-threads-metadata:${versions.jbossThreads}",
-              "org.jboss.deployers:jboss-deployers-impl:2.2.0.Alpha4"
-              //"org.jboss.deployers:jboss-deployers-vfs:${versions.jbossDeployersVfs}",
-              //"trove:trove:2.1.1"
+              "org.jboss.reloaded:jboss-reloaded-vdf-bootstrap-minimal:${versions.jbossReloadedVdfBootstrapMinimal}"
+  
+  testRuntime "org.jboss.deployers:jboss-deployers-structure-spi:${versions.jbossDeployersVfs}",
+              "org.jboss.deployers:jboss-deployers-vfs:${versions.jbossDeployersVfs}",
+              "org.jboss.osgi.runtime:jboss-osgi-framework:1.0.0.Alpha1",
+              "org.jboss.deployers:jboss-deployers-client:${versions.jbossDeployersVfs}", 
+              "org.jboss.deployers:jboss-deployers-core:${versions.jbossDeployersVfs}", 
+              "trove:trove:2.1.1"
 }
 
 configurations {
+  all*.exclude group: 'apache-xerces'
+  all*.exclude group: 'wutka-dtdparser'
+  testRuntime.exclude group: 'org.jboss.kernel'
   all*.exclude module: 'shrinkwrap-api', version: '1.0.0-alpha-9'
-  all*.exclude group: 'com.sun.jdmk'
-  all*.exclude group: 'com.sun.jmx'
-  all*.exclude group: 'javax.jms'
-  all*.exclude group: 'javax.mail'
-  all*.exclude group: 'org.jboss', module: 'jbossxb', version: '2.0.2.Beta5'
-  all*.exclude group: 'log4j', module: 'log4j', version: '1.2.15'
-  all*.exclude group: 'sun-jaxb', module: 'jaxb-api', version: '2.1.9'
-  //all*.exclude group: 'org.jboss.integration', module: 'jboss-classloading-spi', version: '5.1.0.SP1'
 }

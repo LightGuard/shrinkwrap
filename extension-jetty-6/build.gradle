@@ -1,7 +1,6 @@
 dependencies {
-  compile "org.mortbay.jetty:jetty:${versions.jetty6}"
+  compile "org.mortbay.jetty:jetty:${versions.jetty6}" 
 
-  runtime "org.mortbay.jetty:jsp-2.1-jetty:${versions.jetty6}"
-
-  testCompile "org.apache.httpcomponents:httpclient:${versions.httpClient}"
+  testCompile "org.apache.httpcomponents:httpclient:${versions.httpClient}",
+              "org.mortbay.jetty:jsp-2.1-jetty:${versions.jetty6}"
 }
